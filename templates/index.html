@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Predict salary based on years of experience using a Polynomial Regression model." />
+    <title>Salary Predictor — Polynomial Model</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+    <!-- ─── Animated background particles ─── -->
+    <canvas id="particles"></canvas>
+
+    <!-- ─── Main Container ─── -->
+    <main class="container">
+
+        <!-- ───────── Hero / Header ───────── -->
+        <header class="hero">
+            <div class="hero__badge">🧠 Machine Learning</div>
+            <h1 class="hero__title">Salary <span class="gradient-text">Predictor</span></h1>
+            <p class="hero__subtitle">
+                Enter years of experience and let our <strong>Polynomial Regression</strong> model
+                predict the expected salary instantly.
+            </p>
+        </header>
+
+        <!-- ───────── Prediction Card ───────── -->
+        <section class="predict-card" id="predict-card">
+            <form id="predict-form" autocomplete="off">
+                <label for="years-input" class="input-label">Years of Experience</label>
+
+                <div class="input-group">
+                    <div class="input-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
+                             stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M13 7h8m0 0v8m0-8l-8 14-4-8-4 8"/>
+                        </svg>
+                    </div>
+                    <input
+                        type="number"
+                        id="years-input"
+                        name="years_experience"
+                        step="0.1"
+                        min="0"
+                        max="50"
+                        placeholder="e.g. 5.5"
+                        required
+                    />
+                </div>
+
+                <!-- Slider for quick selection -->
+                <div class="slider-wrap">
+                    <input type="range" id="years-slider" min="0" max="20" step="0.5" value="5" />
+                    <div class="slider-labels">
+                        <span>0 yrs</span><span>5 yrs</span><span>10 yrs</span><span>15 yrs</span><span>20 yrs</span>
+                    </div>
+                </div>
+
+                <button type="submit" id="predict-btn" class="btn-predict">
+                    <span class="btn-predict__text">Predict Salary</span>
+                    <span class="btn-predict__loader" id="btn-loader"></span>
+                </button>
+            </form>
+
+            <!-- Result -->
+            <div class="result-panel" id="result-panel">
+                <div class="result-panel__label">Predicted Salary</div>
+                <div class="result-panel__value" id="result-value">—</div>
+                <div class="result-panel__meta" id="result-meta"></div>
+            </div>
+        </section>
+
+        <!-- ───────── Info Cards ───────── -->
+        <section class="info-grid">
+            <div class="info-card">
+                <div class="info-card__icon">📈</div>
+                <h3>Model</h3>
+                <p>Polynomial Regression trained to capture non-linear relationships.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-card__icon">🎯</div>
+                <h3>R² Score</h3>
+                <p><strong>0.8972</strong> — the model accurately captures salary bumps at certain experience levels.</p>
+            </div>
+            <div class="info-card">
+                <div class="info-card__icon">⚡</div>
+                <h3>API</h3>
+                <p>POST to <code>/predict</code> with <code>{"years_experience": N}</code> for JSON results.</p>
+            </div>
+        </section>
+
+        <!-- ───────── Footer ───────── -->
+        <footer class="footer">
+            <p>Built with Flask &amp; scikit-learn · Deployed on AWS EC2</p>
+        </footer>
+    </main>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
