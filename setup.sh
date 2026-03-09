@@ -21,6 +21,7 @@ source venv/bin/activate
 
 # 4. Install requirements
 echo "Installing dependencies from requirements.txt..."
+pip install --upgrade pip setuptools wheel
 pip install -r requirements.txt
 
 # 5. Ensure the model is trained (just in case the .pkl isn't present)
