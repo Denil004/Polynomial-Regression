@@ -4,7 +4,7 @@ This guide walks you through deploying the `Polynomial Regression` model onto an
 
 ## 1. Prerequisites
 
-- An **AWS EC2 Ubuntu** instance with port `5000` open in its Security Group (Custom TCP / Port 5000 / Source: Anywhere `0.0.0.0/0`).
+- An **AWS EC2 Ubuntu** instance with port `5002` open in its Security Group (Custom TCP / Port 5002 / Source: Anywhere `0.0.0.0/0`).
 - This directory `poly` pushed to a GitHub repository OR securely copied to the EC2 via `scp`.
 
 ## 2. Server Configuration
@@ -28,14 +28,14 @@ It should say `active (running)`.
 ### Check from Browser
 If your EC2 public IPv4 is `3.14.15.92`, open your browser to:
 ```
-http://3.14.15.92:5000/
+http://3.14.15.92:5002/
 ```
 You should see the beautiful new Polynomial Regression UI frontend.
 
 ### Test the API endpoint (JSON)
 You can directly ping the API via `curl`:
 ```bash
-curl -X POST http://localhost:5000/predict -H "Content-Type: application/json" -d '{"years_experience": 5.5}'
+curl -X POST http://localhost:5002/predict -H "Content-Type: application/json" -d '{"years_experience": 5.5}'
 ```
 
 *(Expected output: `{"predicted_salary": 78000.00}` or similar depending on the curve).*

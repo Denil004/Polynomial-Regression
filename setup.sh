@@ -47,7 +47,7 @@ User=$USER_NAME
 Group=www-data
 WorkingDirectory=$PROJ_DIR
 Environment="PATH=$PROJ_DIR/venv/bin"
-ExecStart=$PROJ_DIR/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:5000 app:app
+ExecStart=$PROJ_DIR/venv/bin/gunicorn --workers 3 --bind 0.0.0.0:5002 app:app
 
 [Install]
 WantedBy=multi-user.target
@@ -62,6 +62,6 @@ sudo systemctl enable poly_flask
 # 8. Finished
 echo "=========================================================="
 echo "Deployment Complete!"
-echo "The Polynomial Regression API is running via Gunicorn on port 5000."
+echo "The Polynomial Regression API is running via Gunicorn on port 5002."
 echo "Check status with: sudo systemctl status poly_flask"
 echo "=========================================================="
